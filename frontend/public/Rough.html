@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rough</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #DFF2EB;
+            font-family: "Roboto Slab", serif;
+        }
+        #locker {
+            display: flex;
+            flex-direction: column;
+            margin: 50px;
+            padding: 0;
+        }
+
+        .compartment {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 2%;
+            margin: 0;
+        }
+
+        .comp {
+            border-radius: 15px;
+            /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 6px 6px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s linear;
+            padding: 3%;
+            margin: 1%;
+            background-color: white;
+        }
+
+        .comp:hover {
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        }
+
+        .smallCompartment {
+            width: 150px;
+            background-color: #B9E5E8;
+        }
+
+        .mediumCompartment {
+            width: 300px;
+            background-color: #7AB2D3;
+        }
+
+        .largeCompartment {
+            width: 500px;
+            background-color: #4A628A;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="locker">
+        <h1>Locker ID: 1</h1>
+        <h2>Address: Faisal Town Block A</h2>
+        <div class="compartment">
+            <div class="smallCompartment comp">
+                <h3>Compartment ID: 192</h3>
+                <h4>State: Empty</h4>
+                <h4>Category: Small</h4>
+                <h4>Is Locked: true</h4>
+                <h4>OTP: 712078</h4>
+            </div>
+            <div class="smallCompartment comp">
+                <h3>Compartment ID: 192</h3>
+                <h4>State: Empty</h4>
+                <h4>Category: Small</h4>
+                <h4>Is Locked: true</h4>
+                <h4>OTP: 712078</h4>
+            </div>
+            <div class="smallCompartment comp">
+                <h3>Compartment ID: 192</h3>
+                <h4>State: Empty</h4>
+                <h4>Category: Small</h4>
+                <h4>Is Locked: true</h4>
+                <h4>OTP: 712078</h4>
+            </div>
+            <div class="smallCompartment comp">
+                <h3>Compartment ID: 192</h3>
+                <h4>State: Empty</h4>
+                <h4>Category: Small</h4>
+                <h4>Is Locked: true</h4>
+                <h4>OTP: 712078</h4>
+            </div>
+        </div>
+        <div class="compartment">
+            <div class="mediumCompartment comp">
+                <h3>Compartment ID: 192</h3>
+                <h4>State: Empty</h4>
+                <h4>Category: Medium</h4>
+                <h4>Is Locked: true</h4>
+                <h4>OTP: 712078</h4>
+            </div>
+        </div>
+        <div class="compartment">
+            <div class="largeCompartment comp">
+                <h3>Compartment ID: 192</h3>
+                <h4>State: Empty</h4>
+                <h4>Category: Large</h4>
+                <h4>Is Locked: true</h4>
+                <h4>OTP: 712078</h4>
+            </div>
+            <div class="largeCompartment comp">
+                <h3>Compartment ID: 192</h3>
+                <h4>State: Empty</h4>
+                <h4>Category: Large</h4>
+                <h4>Is Locked: true</h4>
+                <h4>OTP: 712078</h4>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
