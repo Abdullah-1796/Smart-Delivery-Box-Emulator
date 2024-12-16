@@ -18,10 +18,11 @@ const db = mysql.createConnection({
 
 const db = new pg.Client({
 	user: "postgres",
-	host: "localhost",
+	host: "smartlocker.cdecc64m04m6.eu-north-1.rds.amazonaws.com",
 	database: "smartLocker",
-	password: "12345678",
-	port: 5432,
+	password: "amazonwebservice123",
+	port: 5432, 
+    ssl: { rejectUnauthorized: false },
 });
 
 db.connect((err) => {
@@ -45,7 +46,7 @@ app.get("/Locker/:id", (req, res) => {
         {
             return res.json("Error");
         }
-        console.log(data);
+        //console.log(data);
         return res.json(data);
     });
 });

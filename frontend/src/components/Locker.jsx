@@ -14,9 +14,9 @@ function Locker()
     //     "id": lockerid
     // });
     console.log(id);
-    function loadData()
+    async function loadData()
     {
-        axios.get(`http://localhost:3001/Locker/${id}`)
+        await axios.get(`http://localhost:3001/Locker/${id}`)
         .then(res => {
             console.log(res.data.rows);
             setData(res.data.rows);
@@ -35,20 +35,20 @@ function Locker()
         setLData([]);
         data.map(d => {
             //console.log(d);
-            if(d.compcategoryid == "1")
+            if(d.compcategoryid === 1)
             {
                 //console.log("Small");
                 setSData((prev) => {
                     return([...prev, d]);
                 });
             }
-            else if(d.compcategoryid == "2")
+            else if(d.compcategoryid === 2)
             {
                 setMData((prev) => {
                     return([...prev, d]);
                 });
             }
-            else if(d.compcategoryid == "3")
+            else if(d.compcategoryid === 3)
             {
                 setLData((prev) => {
                     return([...prev, d]);
