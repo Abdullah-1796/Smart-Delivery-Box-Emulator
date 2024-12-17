@@ -23,6 +23,7 @@ const db = new pg.Client({
 	password: "amazonwebservice123",
 	port: 5432, 
     ssl: { rejectUnauthorized: false },
+    keepAlive: true
 });
 
 db.connect((err) => {
