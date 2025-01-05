@@ -18,7 +18,7 @@ function Locker() {
     // });
     console.log(id);
     async function loadData() {
-        await axios.get(`http://localhost:3001/Locker/${id}`)
+        await axios.get(`http://localhost:4002/Locker/${id}`)
             .then(res => {
                 console.log(res.data.rows);
                 setData(res.data.rows);

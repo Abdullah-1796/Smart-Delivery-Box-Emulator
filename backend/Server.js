@@ -3,7 +3,7 @@ import pg from "pg";
 import cors from "cors";
 import bodyParser from "body-parser";
 
-const port = 3001;
+const port = 4002;
 const app = express();
 app.use(cors());
 app.use(express.json());

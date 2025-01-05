@@ -9,7 +9,7 @@ function LockerList()
 
     function loadData()
     {
-        axios.get("http://localhost:3001/")
+        axios.get("http://localhost:4002/")
         .then(res => {
             setData(res.data.rows);
             //console.log(res.data.rows);
