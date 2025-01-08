@@ -1,51 +1,59 @@
 import React from "react";
 import "../styles/InteractionScreen.css";
-import BeepSound from "../Audio/ButtonClick.mp3";
-import $ from "jquery";
+import $, { event } from "jquery";
 
 function InteractionScreen(props) {
     let clickedOutside = true;
+    let buttonClicked = false;
+    const [otp, setOTP] = React.useState("");
 
-    function handleClick(e)
-    {
+    function handleClick(e, value) {
+        if (otp.length < 4) {
+            setOTP(otp + value);
+        }
         props.beep.play();
         $(e.target).css('background-color', 'rgb(113,142,163)');
         setTimeout(() => {
             $(e.target).css('background-color', 'rgb(162,187,207)');
         }, 200);
     }
+
+    function handleClear()
+    {
+        setOTP("");
+    }
     return (
         <div id="interactionScreenBody" onClick={() => {
-            if(clickedOutside)
+            if (clickedOutside)
                 props.hideScreen();
             else
                 clickedOutside = true;
-            }
-            }>
-            <div id="screenContainer" onClick={() => {clickedOutside = false}}>
+        }
+        }>
+            <div id="screenContainer" onClick={() => { clickedOutside = false }}>
                 <div id="display">
                     <div>Enter OTP</div>
-                    <div>6786</div>
+                    <div>{otp}</div>
                 </div>
                 <div id="buttonContainer">
                     <div class="buttonRow">
-                        <div class="button" onClick={handleClick}>1</div>
-                        <div class="button" onClick={handleClick}>2</div>
-                        <div class="button" onClick={handleClick}>3</div>
+                        <div class="button" onClick={() => {handleClick(event, 1)}}>1</div>
+                        <div class="button" onClick={() => {handleClick(event, 2)}}>2</div>
+                        <div class="button" onClick={() => {handleClick(event, 3)}}>3</div>
                     </div>
                     <div class="buttonRow">
-                        <div class="button" onClick={handleClick}>4</div>
-                        <div class="button" onClick={handleClick}>5</div>
-                        <div class="button" onClick={handleClick}>6</div>
+                        <div class="button" onClick={() => {handleClick(event, 4)}}>4</div>
+                        <div class="button" onClick={() => {handleClick(event, 5)}}>5</div>
+                        <div class="button" onClick={() => {handleClick(event, 6)}}>6</div>
                     </div>
                     <div class="buttonRow">
-                        <div class="button" onClick={handleClick}>7</div>
-                        <div class="button" onClick={handleClick}>8</div>
-                        <div class="button" onClick={handleClick}>9</div>
+                        <div class="button" onClick={() => {handleClick(event, 7)}}>7</div>
+                        <div class="button" onClick={() => {handleClick(event, 8)}}>8</div>
+                        <div class="button" onClick={() => {handleClick(event, 9)}}>9</div>
                     </div>
                     <div class="buttonRow">
-                        <div class="button clearBtn">clear</div>
-                        <div class="button" onClick={handleClick}>0</div>
+                        <div class="button clearBtn" onClick={() => {handleClear()}}>clear</div>
+                        <div class="button" onClick={() => {handleClick(event, 0)}}>0</div>
                         <div class="button doneBtn">done</div>
                     </div>
                     <div class="buttonRow">

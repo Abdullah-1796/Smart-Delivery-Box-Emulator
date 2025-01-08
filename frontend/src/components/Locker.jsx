@@ -88,6 +88,7 @@ function Locker() {
             <InteractionScreen
                 hideScreen={hideScreen}
                 beep={beep}
+                lockerid={data.length !== 0 ? data[0].lockerid : null}
             />
             <div id="locker">
                 <div id="addressBar">
