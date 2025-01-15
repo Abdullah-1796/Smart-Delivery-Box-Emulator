@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/InteractionScreen.css";
 import $, { event } from "jquery";
+import axios from "axios";
 
 function InteractionScreen(props) {
     let clickedOutside = true;
@@ -22,6 +23,22 @@ function InteractionScreen(props) {
     {
         setOTP("");
     }
+
+    function handleDone()
+    {
+        const values = {
+            otp: otp,
+            lockerid: props.lockerid,
+        }
+        axios.get("http://localhost:4002/lockerWithOTP", {params: values})
+        .then(res => {
+            console.log(res.data.rows);
+        })
+        .catch(err => {
+            console.log("Error: " + err);
+        })
+    }
+
     return (
         <div id="interactionScreenBody" onClick={() => {
             if (clickedOutside)
@@ -54,7 +71,7 @@ function InteractionScreen(props) {
                     <div class="buttonRow">
                         <div class="button clearBtn" onClick={() => {handleClear()}}>clear</div>
                         <div class="button" onClick={() => {handleClick(event, 0)}}>0</div>
-                        <div class="button doneBtn">done</div>
+                        <div class="button doneBtn" onClick={handleDone}>done</div>
                     </div>
                     <div class="buttonRow">
                         <div id="otp">Get OTP</div>

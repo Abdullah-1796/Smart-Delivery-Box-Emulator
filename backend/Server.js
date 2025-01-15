@@ -119,3 +119,29 @@ app.put("/Locker/Compartment/otp", (req, res) => {
     });
 });
 
+app.get("/", (req, res) => {
+    const str = "select * from deliveryBox order by lockerId";
+
+    db.query(str, (err, data) => {
+        if(err)
+        {
+            return res.json("Error");
+        }
+        return res.json(data);
+    });
+});
+
+app.get("/lockerWithOTP", async (req, res) => {
+    const otp = req.query.otp;
+    const lockerid = req.query.lockerid;
+    console.log(otp, lockerid);
+    const str = "select * from compartment where lockerid = '"+ lockerid +"' and otp = '"+ otp +"'";
+
+    try {
+        const result = await db.query(str);
+        console.log(result.rows);
+        return res.status(200).send(result);
+    } catch (error) {
+        return res.status(500).send({message: "Error while fetching locker against otp" + error});
+    }
+})
