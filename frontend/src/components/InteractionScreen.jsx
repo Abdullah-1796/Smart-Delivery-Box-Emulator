@@ -31,8 +31,14 @@ function InteractionScreen(props) {
             lockerid: props.lockerid,
         }
         axios.get("http://localhost:4002/lockerWithOTP", {params: values})
-        .then(res => {
+        .then(async res => {
             console.log(res.data.rows);
+            
+            if(res.status == 200)
+            {
+                await props.setData(res.data.rows);
+                //props.hideScreen();
+            }
         })
         .catch(err => {
             console.log("Error: " + err);
@@ -53,27 +59,27 @@ function InteractionScreen(props) {
                     <div>{otp}</div>
                 </div>
                 <div id="buttonContainer">
-                    <div class="buttonRow">
-                        <div class="button" onClick={() => {handleClick(event, 1)}}>1</div>
-                        <div class="button" onClick={() => {handleClick(event, 2)}}>2</div>
-                        <div class="button" onClick={() => {handleClick(event, 3)}}>3</div>
+                    <div className="buttonRow">
+                        <div className="button" onClick={() => {handleClick(event, 1)}}>1</div>
+                        <div className="button" onClick={() => {handleClick(event, 2)}}>2</div>
+                        <div className="button" onClick={() => {handleClick(event, 3)}}>3</div>
                     </div>
-                    <div class="buttonRow">
-                        <div class="button" onClick={() => {handleClick(event, 4)}}>4</div>
-                        <div class="button" onClick={() => {handleClick(event, 5)}}>5</div>
-                        <div class="button" onClick={() => {handleClick(event, 6)}}>6</div>
+                    <div className="buttonRow">
+                        <div className="button" onClick={() => {handleClick(event, 4)}}>4</div>
+                        <div className="button" onClick={() => {handleClick(event, 5)}}>5</div>
+                        <div className="button" onClick={() => {handleClick(event, 6)}}>6</div>
                     </div>
-                    <div class="buttonRow">
-                        <div class="button" onClick={() => {handleClick(event, 7)}}>7</div>
-                        <div class="button" onClick={() => {handleClick(event, 8)}}>8</div>
-                        <div class="button" onClick={() => {handleClick(event, 9)}}>9</div>
+                    <div className="buttonRow">
+                        <div className="button" onClick={() => {handleClick(event, 7)}}>7</div>
+                        <div className="button" onClick={() => {handleClick(event, 8)}}>8</div>
+                        <div className="button" onClick={() => {handleClick(event, 9)}}>9</div>
                     </div>
-                    <div class="buttonRow">
-                        <div class="button clearBtn" onClick={() => {handleClear()}}>clear</div>
-                        <div class="button" onClick={() => {handleClick(event, 0)}}>0</div>
-                        <div class="button doneBtn" onClick={handleDone}>done</div>
+                    <div className="buttonRow">
+                        <div className="button clearBtn" onClick={() => {handleClear()}}>clear</div>
+                        <div className="button" onClick={() => {handleClick(event, 0)}}>0</div>
+                        <div className="button doneBtn" onClick={handleDone}>done</div>
                     </div>
-                    <div class="buttonRow">
+                    <div className="buttonRow">
                         <div id="otp">Get OTP</div>
                     </div>
                 </div>

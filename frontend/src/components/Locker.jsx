@@ -6,12 +6,14 @@ import Compartment from "./Compartment";
 import { useParams } from "react-router-dom";
 import InteractionScreen from "./InteractionScreen";
 import BeepSound from "../Audio/ButtonClick.mp3";
+import OpenCompartment from "./OpenCompartment";
 function Locker() {
     const { id } = useParams();
     const [data, setData] = React.useState([]);
     const [sData, setSData] = React.useState([]);
     const [mData, setMData] = React.useState([]);
     const [lData, setLData] = React.useState([]);
+    const [cData, setCData] = React.useState([]);
     const beep = new Audio(BeepSound);
     // const [id, setID] = React.useState({
     //     "id": lockerid
@@ -85,59 +87,80 @@ function Locker() {
 
     return (
         <div>
-            <InteractionScreen
-                hideScreen={hideScreen}
-                beep={beep}
-                lockerid={data.length !== 0 ? data[0].lockerid : null}
-            />
-            <div id="locker">
-                <div id="addressBar">
-                    <h2>Locker ID: {data.length !== 0 ? data[0].lockerid : null}</h2>
-                    <h2>Address: {data.length !== 0 ? data[0].address : null}</h2>
-                    <div id="screenButton" onClick={unhideScreen}>
-                        Open Screen
+            {
+                cData.length !== 0 ? <OpenCompartment
+                    lockerid={cData[0].lockerid}
+                    compid={cData[0].compid}
+                    compstateid={cData[0].compstateid}
+                    compcategoryid={cData[0].compcategoryid}
+                    otp={cData[0].otp}
+                    parcelid={cData[0].parcelid}
+                    purpose={cData[0].purpose}
+                    islocked={"false"}
+                    setData={setCData}
+                /> : <div>
+                    <InteractionScreen
+                        hideScreen={hideScreen}
+                        beep={beep}
+                        lockerid={data.length !== 0 ? data[0].lockerid : null}
+                        setData={setCData}
+                    />
+                    <div id="locker">
+                        <div id="addressBar">
+                            <h2>Locker ID: {data.length !== 0 ? data[0].lockerid : null}</h2>
+                            <h2>Address: {data.length !== 0 ? data[0].address : null}</h2>
+                            <div id="screenButton" onClick={unhideScreen}>
+                                Open Screen
+                            </div>
+                        </div>
+                        <div className="compartment">
+                            {sData.map(d => (
+                                <Compartment
+                                    key={d.compid}
+                                    className="smallCompartment"
+                                    compID={d.compid}
+                                    compState={d.compstateid === 1 ? "Empty" : d.compstateid === 2 ? "Reserved" : d.compstateid === 3 ? "Acquired" : "Null"}
+                                    compCategory="Small"
+                                    isLocked={d.islocked.toString()}
+                                    otp={d.otp}
+                                    parcelID={d.parcelid}
+                                    purpose={d.purpose}
+                                />
+                            ))}
+                        </div>
+                        <div className="compartment">
+                            {mData.map(d => (
+                                <Compartment
+                                    key={d.compid}
+                                    className="mediumCompartment"
+                                    compID={d.compid}
+                                    compState={d.compstateid === 1 ? "Empty" : d.compstateid === 2 ? "Reserved" : d.compstateid === 3 ? "Acquired" : "Null"}
+                                    compCategory="Medium"
+                                    isLocked={d.islocked.toString()}
+                                    otp={d.otp}
+                                    parcelID={d.parcelid}
+                                    purpose={d.purpose}
+                                />
+                            ))}
+                        </div>
+                        <div className="compartment">
+                            {lData.map(d => (
+                                <Compartment
+                                    key={d.compid}
+                                    className="largeCompartment"
+                                    compID={d.compid}
+                                    compState={d.compstateid === 1 ? "Empty" : d.compstateid === 2 ? "Reserved" : d.compstateid === 3 ? "Acquired" : "Null"}
+                                    compCategory="Large"
+                                    isLocked={d.islocked.toString()}
+                                    otp={d.otp}
+                                    parcelID={d.parcelid}
+                                    purpose={d.purpose}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
-                <div className="compartment">
-                    {sData.map(d => (
-                        <Compartment
-                            key={d.compid}
-                            className="smallCompartment"
-                            compID={d.compid}
-                            compState={d.compstateid === 1 ? "Empty" : d.compstateid === 2 ? "Reserved" : d.compstateid === 3 ? "Acquired" : "Null"}
-                            compCategory="Small"
-                            isLocked={d.islocked.toString()}
-                            otp={d.otp}
-                        />
-                    ))}
-                </div>
-                <div className="compartment">
-                    {mData.map(d => (
-                        <Compartment
-                            key={d.compid}
-                            className="mediumCompartment"
-                            compID={d.compid}
-                            compState={d.compstateid === 1 ? "Empty" : d.compstateid === 2 ? "Reserved" : d.compstateid === 3 ? "Acquired" : "Null"}
-                            compCategory="Medium"
-                            isLocked={d.islocked.toString()}
-                            otp={d.otp}
-                        />
-                    ))}
-                </div>
-                <div className="compartment">
-                    {lData.map(d => (
-                        <Compartment
-                            key={d.compid}
-                            className="largeCompartment"
-                            compID={d.compid}
-                            compState={d.compstateid === 1 ? "Empty" : d.compstateid === 2 ? "Reserved" : d.compstateid === 3 ? "Acquired" : "Null"}
-                            compCategory="Large"
-                            isLocked={d.islocked.toString()}
-                            otp={d.otp}
-                        />
-                    ))}
-                </div>
-            </div>
+            }
         </div>
     );
 }

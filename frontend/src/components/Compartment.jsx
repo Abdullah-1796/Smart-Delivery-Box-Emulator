@@ -7,6 +7,8 @@ function Compartment(props)
             <h4>State: {props.compState}</h4>
             <h4>Category: {props.compCategory}</h4>
             <h4>Is Locked: {props.isLocked}</h4>
+            <h4>Parcel ID: {props.parcelID}</h4>
+            <h4>Purpose: {props.purpose}</h4>
             <h4>OTP: {props.otp}</h4>
         </div>
     );

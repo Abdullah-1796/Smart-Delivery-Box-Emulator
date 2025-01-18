@@ -119,6 +119,36 @@ app.put("/Locker/Compartment/otp", (req, res) => {
     });
 });
 
+app.put("/Locker/Compartment/parcelid", (req, res) => {
+    let lockerid = req.body.lockerid;
+    let compid = req.body.compid;
+    let parcelid = req.body.parcelid;
+
+    const str = "update compartment set parcelid = " + parcelid + " where lockerid = " + lockerid + " and compid = " + compid;
+
+    db.query(str, (err, data) => {
+        if (err) {
+            return res.json("Error");
+        }
+        return res.json("Parcel ID updated");
+    });
+});
+
+app.put("/Locker/Compartment/purpose", (req, res) => {
+    let lockerid = req.body.lockerid;
+    let compid = req.body.compid;
+    let purpose = req.body.purpose;
+
+    const str = "update compartment set purpose = '" + purpose + "' where lockerid = " + lockerid + " and compid = " + compid;
+
+    db.query(str, (err, data) => {
+        if (err) {
+            return res.json("Error while updating purpose: " + err);
+        }
+        return res.json("Purpose updated");
+    });
+});
+
 app.get("/", (req, res) => {
     const str = "select * from deliveryBox order by lockerId";
 
@@ -139,9 +169,15 @@ app.get("/lockerWithOTP", async (req, res) => {
 
     try {
         const result = await db.query(str);
-        console.log(result.rows);
+        //console.log(result.rows);
         return res.status(200).send(result);
     } catch (error) {
         return res.status(500).send({message: "Error while fetching locker against otp" + error});
     }
+});
+
+app.put("/placeParcelByRider", async (req, res) => {
+    const parcelID = req.body.parcelID;
+
+    //send SMS to receiver with new OTP to take parcel
 })
