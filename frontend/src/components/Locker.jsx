@@ -97,6 +97,7 @@ function Locker() {
                     parcelid={cData[0].parcelid}
                     purpose={cData[0].purpose}
                     islocked={"false"}
+                    status={cData[0].status}
                     setData={setCData}
                 /> : <div>
                     <InteractionScreen

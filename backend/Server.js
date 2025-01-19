@@ -165,7 +165,7 @@ app.get("/lockerWithOTP", async (req, res) => {
     const otp = req.query.otp;
     const lockerid = req.query.lockerid;
     console.log(otp, lockerid);
-    const str = "select * from compartment where lockerid = '"+ lockerid +"' and otp = '"+ otp +"'";
+    const str = "select c.lockerid, c.compid, c.compstateid, c.compcategoryid, c.islocked, c.otp, c.parcelid, c.purpose, p.status from compartment c inner join (select status, parcelid from parcelForDelivery) as p on c.parcelid = p.parcelid where lockerid = '"+ lockerid +"' and otp = '"+ otp +"'";
 
     try {
         const result = await db.query(str);

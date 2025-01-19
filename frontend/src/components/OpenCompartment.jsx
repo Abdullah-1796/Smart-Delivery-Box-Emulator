@@ -124,7 +124,7 @@ function OpenCompartment(props) {
                 console.error("Error while placing parcel: " + err);
             });
 
-        //updating parcelid of compartment to 0
+        //updating purpose of compartment to 0
         setPurpose("none");
         const values3 = {
             lockerid: props.lockerid,
@@ -139,21 +139,28 @@ function OpenCompartment(props) {
             .catch(err => {
                 console.error("Error while placing parcel: " + err);
             });
-        const values4 = {
-            parcelID: parcelid,
-            status: "parcelDelivered"
+
+        //updating status of parcel
+        if(props.status != "failed")
+        {
+            const values4 = {
+                parcelID: parcelid,
+                status: "parcelDelivered"
+            }
+            await axios.put('http://localhost:4001/updateStatus', values4)
+                .then(response => {
+                    console.log(response.data.message);
+                })
+                .catch(err => {
+                    throw (err);
+                });
+
+            //sending SMS to receiver that parcel has been picked up
+            
+            alert("Parcel has been picked up successfully");
         }
-        await axios.put('http://localhost:4001/updateStatus', values4)
-            .then(response => {
-                console.log(response.data.message);
-            })
-            .catch(err => {
-                throw (err);
-            });
-
-        //sending SMS to receiver that parcel has been picked up
-
-        alert("Parcel has been picked up successfully");
+        else
+            alert("Failed Parcel has been picked up successfully");
     }
     return (
         <div>
