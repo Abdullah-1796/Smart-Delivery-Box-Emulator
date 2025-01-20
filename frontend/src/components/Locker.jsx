@@ -98,6 +98,7 @@ function Locker() {
                     purpose={cData[0].purpose}
                     islocked={"false"}
                     status={cData[0].status}
+                    stampid={cData[0].stampid}
                     setData={setCData}
                 /> : <div>
                     <InteractionScreen

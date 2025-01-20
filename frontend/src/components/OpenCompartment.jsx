@@ -59,7 +59,19 @@ function OpenCompartment(props) {
                 console.log(response.data.message);
             })
             .catch(err => {
-                throw (err);
+                console.error("Error while updating status of parcel: " + err);
+            });
+
+        const values3 = {
+            column: "placement",
+            stampid: props.stampid
+        }
+        await axios.put('http://localhost:4001/updateTimestamp', values3)
+            .then(response => {
+                console.log(response.data.message);
+            })
+            .catch(err => {
+                console.error("Error while updating status of parcel: " + err);
             });
 
         //sending SMS to receiver for new OTP to take parcel
@@ -141,8 +153,7 @@ function OpenCompartment(props) {
             });
 
         //updating status of parcel
-        if(props.status != "failed")
-        {
+        if (props.status != "failed") {
             const values4 = {
                 parcelID: parcelid,
                 status: "parcelDelivered"
@@ -155,8 +166,22 @@ function OpenCompartment(props) {
                     throw (err);
                 });
 
+            //adding timestamp
+            const values3 = {
+                column: "takeaway",
+                stampid: props.stampid
+            }
+            await axios.put('http://localhost:4001/updateTimestamp', values3)
+                .then(response => {
+                    console.log(response.data.message);
+                })
+                .catch(err => {
+                    console.error("Error while updating status of parcel: " + err);
+                });
+
+
             //sending SMS to receiver that parcel has been picked up
-            
+
             alert("Parcel has been picked up successfully");
         }
         else
