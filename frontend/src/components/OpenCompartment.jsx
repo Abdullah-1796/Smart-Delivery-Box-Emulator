@@ -184,8 +184,19 @@ function OpenCompartment(props) {
 
             alert("Parcel has been picked up successfully");
         }
-        else
+        else {
+            const values = {
+                parcelID: props.parcelid
+            }
+            await axios.put('http://localhost:4001/parcelForDelivery/updateLockerID', values)
+                .then(response => {
+                    console.log(response.data.message);
+                })
+                .catch(err => {
+                    console.error("Error while updating lockerid of parcel to 0: " + err);
+                });
             alert("Failed Parcel has been picked up successfully");
+        }
     }
     return (
         <div>
