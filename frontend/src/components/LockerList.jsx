@@ -11,8 +11,8 @@ function LockerList()
     {
         axios.get("http://localhost:4002/")
         .then(res => {
-            setData(res.data.rows);
-            //console.log(res.data.rows);
+            setData(res.data);
+            console.log(res.data);
         })
         .catch(error => {
             console.log(`Error while fecthing lockers ${error}`);

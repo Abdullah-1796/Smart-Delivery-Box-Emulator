@@ -106,6 +106,7 @@ function Locker() {
                         beep={beep}
                         lockerid={data.length !== 0 ? data[0].lockerid : null}
                         setData={setCData}
+                        purpose={data.length !== 0 ? data[0].purpose : null}
                     />
                     <div id="locker">
                         <div id="addressBar">

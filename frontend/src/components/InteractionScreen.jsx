@@ -30,7 +30,16 @@ function InteractionScreen(props) {
             otp: otp,
             lockerid: props.lockerid,
         }
-        axios.get("http://localhost:4002/lockerWithOTP", {params: values})
+        let api="";
+        if(props.purpose==="sending")
+        {
+            api="SenderlockerWithOTP";
+        }
+        else
+        {
+            api="lockerWithOTP";
+        }
+        axios.get(`http://localhost:4002/${api}`, {params: values})
         .then(async res => {
             console.log(res.data.rows);
             
