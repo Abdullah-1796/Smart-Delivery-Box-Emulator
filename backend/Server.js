@@ -162,10 +162,10 @@ app.use("/Locker/Compartment/isLocked", isLocked);
  *       500:
  *         description: Internal server error
  */
-app.put("/Locker/Compartment/compstateid", compstate);
+app.use("/Locker/Compartment/compstateid", compstate);
 
 
-/**
+/**use
  * @swagger
  * /Locker/Compartment/otp:
  *   put:
@@ -201,7 +201,7 @@ app.put("/Locker/Compartment/compstateid", compstate);
  *       500:
  *         description: Internal server error
  */
-app.put("/Locker/Compartment/otp", otp);
+app.use("/Locker/Compartment/otp", otp);
 
 
 /**
@@ -240,7 +240,7 @@ app.put("/Locker/Compartment/otp", otp);
  *       500:
  *         description: Internal server error
  */
-app.put("/Locker/Compartment/parcelid", parcelID);
+app.use("/Locker/Compartment/parcelid", parcelID);
 
 
 /**
@@ -279,7 +279,7 @@ app.put("/Locker/Compartment/parcelid", parcelID);
  *       500:
  *         description: Internal server error
  */
-app.put("/Locker/Compartment/purpose", purpose);
+app.use("/Locker/Compartment/purpose", purpose);
 
 
 /**
@@ -375,7 +375,7 @@ app.get("/", async (req, res) => {
  *         description: Internal server error
  */
 
-app.get("/lockerWithOTP", receivingLocker);
+app.use("/lockerWithOTP", receivingLocker);
 
 
 /**
@@ -384,10 +384,10 @@ app.get("/lockerWithOTP", receivingLocker);
  *   get:
  *     summary: send SMS to receiver with new OTP to take parcel
  */
-app.put("/placeParcelByRider", async (req, res) => {
+app.use("/placeParcelByRider", async (req, res) => {
     const parcelID = req.body.parcelID;
 
     //send SMS to receiver with new OTP to take parcel
 })
 
-app.get("/SenderlockerWithOTP", sendingLocker);
+app.use("/SenderlockerWithOTP", sendingLocker);
