@@ -1,7 +1,7 @@
 import express from 'express';
 import db from "../database.js";
 const router=express.Router();
-router.get("/SenderlockerWithOTP", async (req, res) => {
+router.get("/", async (req, res) => {
     const otp = req.query.otp;
     const lockerid = req.query.lockerid;
     console.log(otp, lockerid);
@@ -9,7 +9,7 @@ router.get("/SenderlockerWithOTP", async (req, res) => {
 
     try {
         const result = await db.query(str);
-        //console.log(result.rows);
+        ////console.log(result.rows);
         return res.status(200).send(result);
     } catch (error) {
         return res.status(500).send({ message: "Error while fetching locker against otp" + error });

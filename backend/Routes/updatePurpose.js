@@ -16,4 +16,18 @@ router.put("/", (req, res) => {
     });
 });
 
+router.get("/", (req, res) => {
+    const { lockerid, otp } = req.body;
+
+    const str = "SELECT purpose FROM compartment WHERE lockerid = $1 AND otp = $2";
+
+    db.query(str, [lockerid, otp], (err, data) => {
+        if (err) {
+            console.error("Error while getting purpose:", err);
+            return res.status(500).json({ error: "Error while getting purpose" });
+        }
+        res.status(200).json(data.rows); // or data.rows[0] if you're expecting one result
+    });
+});
+
 export default router;

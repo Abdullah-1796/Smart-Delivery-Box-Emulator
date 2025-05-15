@@ -11,7 +11,7 @@ import parcelID from "./Routes/updateParcelId.js"
 import purpose from "./Routes/updatePurpose.js"
 import receivingLocker from "./Routes/getReceiverLockerfromOTP.js"
 import sendingLocker from "./Routes/getSenderLockerfromOTP.js"
-import db from "./database.js" 
+import db from "./database.js"
 const port = 4002;
 const app = express();
 app.use(cors());
@@ -162,7 +162,22 @@ app.use("/Locker/Compartment/isLocked", isLocked);
  *       500:
  *         description: Internal server error
  */
-app.use("/Locker/Compartment/compstateid", compstate);
+app.put("/Locker/Compartment/compstateid", (req, res) => {
+    let lockerid = req.body.lockerid;
+    let compid = req.body.compid;
+    let compstateid = req.body.compstateid;
+
+    console.log(lockerid);
+
+    const str = "update compartment set compstateid = " + compstateid + " where lockerid = " + lockerid + " and compid = " + compid;
+
+    db.query(str, (err, data) => {
+        if (err) {
+            return res.json("Error");
+        }
+        return res.json("compstateid updated");
+    });
+});
 
 
 /**use

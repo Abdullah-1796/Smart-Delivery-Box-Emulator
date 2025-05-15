@@ -24,7 +24,7 @@ function OpenCompartment(props) {
     async function handlePlaceParcelByRider() {
         //updating status of compartment in locker to Reserved
         setLoading(true);
-        console.log("handlePlaceParcelByRider")
+        //console.log("handlePlaceParcelByRider")
         setCompStateID(3);
         const values = {
             lockerid: props.lockerid,
@@ -33,7 +33,7 @@ function OpenCompartment(props) {
         }
         await axios.put('http://localhost:4002/Locker/Compartment/compstateid', values)
             .then(response => {
-                console.log(response.data);
+                //console.log(response.data);
             })
             .catch(err => {
                 console.error("Error while placing parcel: " + err);
@@ -49,7 +49,7 @@ function OpenCompartment(props) {
         }
         await axios.put('http://localhost:4002/Locker/Compartment/otp', values1)
             .then(response => {
-                console.log(response.data);
+                //console.log(response.data);
             })
             .catch(err => {
                 console.error("Error while placing parcel: " + err);
@@ -61,7 +61,7 @@ function OpenCompartment(props) {
         }
         await axios.put('http://localhost:4001/updateStatus', values2)
             .then(response => {
-                console.log(response.data.message);
+                //console.log(response.data.message);
             })
             .catch(err => {
                 console.error("Error while updating status of parcel: " + err);
@@ -73,7 +73,7 @@ function OpenCompartment(props) {
         }
         await axios.put('http://localhost:4001/updateTimestamp', values3)
             .then(response => {
-                console.log(response.data.message);
+                //console.log(response.data.message);
             })
             .catch(err => {
                 console.error("Error while updating status of parcel: " + err);
@@ -95,7 +95,7 @@ function OpenCompartment(props) {
 
     async function handleTakeParcelByRider() {
         //updating compartment state to Empty
-        console.log("handleTakeParcelByRider")
+        //console.log("handleTakeParcelByRider")
         setCompStateID(1);
         const values = {
             lockerid: props.lockerid,
@@ -104,7 +104,7 @@ function OpenCompartment(props) {
         }
         await axios.put('http://localhost:4002/Locker/Compartment/compstateid', values)
             .then(response => {
-                console.log(response.data);
+                //console.log(response.data);
                 //res.status(200).send({message: "Locker reserved"});
             })
             .catch(err => {
@@ -120,7 +120,7 @@ function OpenCompartment(props) {
         }
         await axios.put('http://localhost:4002/Locker/Compartment/otp', values1)
             .then(response => {
-                console.log(response.data);
+                //console.log(response.data);
                 //res.status(200).send({message: "Locker reserved"});
             })
             .catch(err => {
@@ -136,7 +136,7 @@ function OpenCompartment(props) {
         }
         await axios.put('http://localhost:4002/Locker/Compartment/parcelid', values2)
             .then(response => {
-                console.log(response.data);
+                //console.log(response.data);
                 //res.status(200).send({message: "Locker reserved"});
             })
             .catch(err => {
@@ -152,7 +152,7 @@ function OpenCompartment(props) {
         }
         await axios.put('http://localhost:4002/Locker/Compartment/purpose', values3)
             .then(response => {
-                console.log(response.data);
+                //console.log(response.data);
                 //res.status(200).send({message: "Locker reserved"});
             })
             .catch(err => {
@@ -167,7 +167,7 @@ function OpenCompartment(props) {
             }
             await axios.put('http://localhost:4001/updateStatusOfSending', values4)
                 .then(response => {
-                    console.log(response.data.message);
+                    //console.log(response.data.message);
                 })
                 .catch(err => {
                     throw (err);
@@ -180,7 +180,7 @@ function OpenCompartment(props) {
             }
             await axios.put('http://localhost:4001/updateTimestamp', values3)
                 .then(response => {
-                    console.log(response.data.message);
+                    //console.log(response.data.message);
                 })
                 .catch(err => {
                     console.error("Error while updating status of parcel: " + err);
@@ -200,7 +200,7 @@ function OpenCompartment(props) {
             }
             await axios.put('http://localhost:4001/parcelForDelivery/updateLockerID', values)
                 .then(response => {
-                    console.log(response.data.message);
+                    //console.log(response.data.message);
                 })
                 .catch(err => {
                     console.error("Error while updating lockerid of parcel to 0: " + err);
@@ -211,7 +211,7 @@ function OpenCompartment(props) {
 
     async function handlePlaceParcelBySender() {
         //updating status of compartment in locker to Reserved
-        console.log("handlePlaceParcelBySender", props.stampid)
+        //console.log("handlePlaceParcelBySender", props.stampid)
         setCompStateID(3);
         const values = {
             lockerid: props.lockerid,
@@ -220,7 +220,7 @@ function OpenCompartment(props) {
         }
         await axios.put('http://localhost:4002/Locker/Compartment/compstateid', values)
             .then(response => {
-                console.log(response.data);
+                //console.log(response.data);
             })
             .catch(err => {
                 console.error("Error while placing parcel: " + err);
@@ -236,7 +236,7 @@ function OpenCompartment(props) {
         }
         await axios.put('http://localhost:4002/Locker/Compartment/otp', values1)
             .then(response => {
-                console.log(response.data);
+                //console.log(response.data);
             })
             .catch(err => {
                 console.error("Error while placing parcel: " + err);
@@ -248,7 +248,7 @@ function OpenCompartment(props) {
         }
         await axios.put('http://localhost:4001/updateStatusOfSending', values2)
             .then(response => {
-                console.log(response.data.message);
+                //console.log(response.data.message);
             })
             .catch(err => {
                 console.error("Error while updating status of parcel: " + err);
@@ -260,7 +260,7 @@ function OpenCompartment(props) {
         }
         await axios.put('http://localhost:4001/updateTimestamp', values3)
             .then(response => {
-                console.log(response.data.message);
+                //console.log(response.data.message);
             })
             .catch(err => {
                 console.error("Error while updating status of parcel: " + err);
@@ -275,7 +275,7 @@ function OpenCompartment(props) {
     async function handleTakeParcelByReceiver() {
         //updating compartment state to Empty
         setLoading(true);
-        console.log("handleTakeParcelByReceiver")
+        //console.log("handleTakeParcelByReceiver")
         setCompStateID(1);
         const values = {
             lockerid: props.lockerid,
@@ -284,7 +284,7 @@ function OpenCompartment(props) {
         }
         await axios.put('http://localhost:4002/Locker/Compartment/compstateid', values)
             .then(response => {
-                console.log(response.data);
+                //console.log(response.data);
                 //res.status(200).send({message: "Locker reserved"});
             })
             .catch(err => {
@@ -300,7 +300,7 @@ function OpenCompartment(props) {
         }
         await axios.put('http://localhost:4002/Locker/Compartment/otp', values1)
             .then(response => {
-                console.log(response.data);
+                //console.log(response.data);
                 //res.status(200).send({message: "Locker reserved"});
             })
             .catch(err => {
@@ -316,7 +316,7 @@ function OpenCompartment(props) {
         }
         await axios.put('http://localhost:4002/Locker/Compartment/parcelid', values2)
             .then(response => {
-                console.log(response.data);
+                //console.log(response.data);
                 //res.status(200).send({message: "Locker reserved"});
             })
             .catch(err => {
@@ -332,7 +332,7 @@ function OpenCompartment(props) {
         }
         await axios.put('http://localhost:4002/Locker/Compartment/purpose', values3)
             .then(response => {
-                console.log(response.data);
+                //console.log(response.data);
                 //res.status(200).send({message: "Locker reserved"});
             })
             .catch(err => {
@@ -347,7 +347,7 @@ function OpenCompartment(props) {
             }
             await axios.put('http://localhost:4001/updateStatus', values4)
                 .then(response => {
-                    console.log(response.data.message);
+                    //console.log(response.data.message);
                 })
                 .catch(err => {
                     throw (err);
@@ -360,7 +360,7 @@ function OpenCompartment(props) {
             }
             await axios.put('http://localhost:4001/updateTimestamp', values3)
                 .then(response => {
-                    console.log(response.data.message);
+                    //console.log(response.data.message);
                 })
                 .catch(err => {
                     console.error("Error while updating status of parcel: " + err);
@@ -384,7 +384,7 @@ function OpenCompartment(props) {
             }
             await axios.put('http://localhost:4001/parcelForDelivery/updateLockerID', values)
                 .then(response => {
-                    console.log(response.data.message);
+                    //console.log(response.data.message);
                 })
                 .catch(err => {
                     console.error("Error while updating lockerid of parcel to 0: " + err);
