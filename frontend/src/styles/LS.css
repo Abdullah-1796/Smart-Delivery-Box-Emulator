@@ -1,0 +1,64 @@
+/* styles/LS.css */
+
+.simulator-container {
+  padding: 20px;
+  background-color: #000000;
+}
+
+.simulator-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.locker-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 24px;
+}
+
+.locker {
+  /* background-image: url('/images/locker.jpg'); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 10px;
+  position: relative;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+
+.locker-label {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 2px 6px;
+  font-size: 12px;
+  border-radius: 3px;
+}
+
+.locker-lock-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.locker-status {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}

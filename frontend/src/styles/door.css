@@ -1,0 +1,70 @@
+.scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  perspective: 2200px;
+  overflow: hidden;
+}
+
+/* Door panel */
+.door {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* background-image: /url('/images/locker4.png'); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 1s ease-in-out;
+  z-index: 2;
+}
+
+.door.closed {
+  transform: rotateY(0deg);
+}
+
+.door.open {
+  transform: rotateY(-90deg);
+}
+
+/* Content revealed behind the door */
+.room {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* background-color: #111; Optional background for behind the door */
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.floating {
+  animation: float 1s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.door-button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}

@@ -78,7 +78,7 @@ function InteractionScreen(props) {
         }>
             <div id="screenContainer" onClick={() => { clickedOutside = false }}>
                 <div id="display">
-                    <div>Enter OTP</div>
+                    <div className="placeholder">Enter OTP</div>
                     <div>{otp}</div>
                 </div>
                 <div id="buttonContainer">
@@ -102,9 +102,9 @@ function InteractionScreen(props) {
                         <div className="button" onClick={() => { handleClick(event, 0) }}>0</div>
                         <div className="button doneBtn" onClick={handleDone}>done</div>
                     </div>
-                    <div className="buttonRow">
+                    {/* <div className="buttonRow">
                         <div id="otp">Get OTP</div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

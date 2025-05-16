@@ -18,17 +18,17 @@ function Locker() {
     // const [id, setID] = React.useState({
     //     "id": lockerid
     // });
-    //console.log(id);
+    console.log(id);
     async function loadData() {
         await axios.get(`http://localhost:4002/Locker/${id}`)
             .then(res => {
-                //console.log(res.data.rows);
+                console.log(res.data.rows);
                 setData(res.data.rows);
-                //console.log("data",data);
+                console.log("data",data);
                 //separateData();
             })
             .catch(error => {
-                //console.log("Error on fetching data" + error);
+                console.log("Error on fetching data" + error);
             });
     }
 
@@ -37,9 +37,9 @@ function Locker() {
         setMData([]);
         setLData([]);
         data.map(d => {
-            ////console.log(d);
+            //console.log(d);
             if (d.compcategoryid === 1) {
-                ////console.log("Small");
+                //console.log("Small");
                 setSData((prev) => {
                     return ([...prev, d]);
                 });
@@ -55,7 +55,7 @@ function Locker() {
                 });
             }
         });
-        ////console.log(sData.length);
+        //console.log(sData.length);
     }
     React.useEffect(() => {
         loadData();

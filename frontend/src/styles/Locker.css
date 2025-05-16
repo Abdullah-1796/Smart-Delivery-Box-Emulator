@@ -2,9 +2,10 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
-    background-color: #DFF2EB;
+    background-color: aliceblue;
     font-family: "Roboto Slab", serif;
 }
+
 #locker {
     display: flex;
     flex-direction: column;
@@ -18,13 +19,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(20,47,68);
+    background-color: rgb(20, 47, 68);
     border-radius: 40px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     margin-bottom: 20px;
 }
 
-#addressBar > h2 {
+#addressBar>h2 {
     margin-left: 30px;
     color: white;
 }
@@ -67,15 +68,63 @@ body {
 
 .smallCompartment {
     width: 150px;
+    height: 200px;
     background-color: #B9E5E8;
 }
 
 .mediumCompartment {
-    width: 300px;
+    width: 250px;
+    height: 400px;
     background-color: #7AB2D3;
 }
 
 .largeCompartment {
-    width: 500px;
+    width: 350px;
+    height: 500px;
     background-color: #4A628A;
+}
+
+.info-container {
+    position: absolute;
+    color: beige;
+    font-size: large;
+}
+
+.smallCompartment .info-container {
+    top: 60px;
+    left: 15px;
+}
+
+.mediumCompartment .info-container {
+    top: 150px;
+    left: 35px;
+}
+
+.largeCompartment .info-container {
+    top: 150px;
+    left: 35px;
+}
+
+.info-container .info {
+    margin-bottom: 10px;
+}
+
+
+.locker-label {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 2px 6px;
+    font-size: 12px;
+    border-radius: 3px;
+}
+
+.locker-lock-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 16px;
+    cursor: pointer;
 }

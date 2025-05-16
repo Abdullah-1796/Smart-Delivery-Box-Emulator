@@ -1,0 +1,22 @@
+.overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 60%;
+    height: 100vh;
+    /* Tailwind's h-50 = 200px */
+    /* background-color: rgba(0, 0, 0, 0.5); Tailwind's bg-opacity-50 on dark background */
+    z-index: 9000;
+    position: relative;
+    /* Only use fixed if it's meant to overlay full screen */
+}
+
+
+
+
+/* .centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
