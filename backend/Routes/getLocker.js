@@ -3,7 +3,7 @@ import db from "../database.js";
 const router=express.Router();
 router.get("/:id", (req, res) => {
     const id = req.params.id;
-    // console.log(id);
+    // //console.log(id);
     const str = `
         SELECT * FROM deliveryBox d 
         INNER JOIN compartment c ON d.lockerID = c.lockerID 

@@ -6,6 +6,8 @@ router.put("/", (req, res) => {
     let compid = req.body.compid;
     let compstateid = req.body.compstateid;
 
+    console.log(lockerid);
+
     const str = "update compartment set compstateid = " + compstateid + " where lockerid = " + lockerid + " and compid = " + compid;
 
     db.query(str, (err, data) => {
